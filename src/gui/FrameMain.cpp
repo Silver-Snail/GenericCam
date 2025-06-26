@@ -78,6 +78,7 @@
 #endif
 #include <math.h>
 
+#include <wx/wx.h>
 #include <wx/msgdlg.h>
 #include <wx/progdlg.h>
 #include <wx/busyinfo.h>
@@ -415,22 +416,22 @@ void FrameMain::OnObjectLoad(wxCommandEvent& event)
 	CollectionFilepaths * filepaths = GetFilePaths();
 	wxCommandProcessor * cmdProc = GetDocument()->GetCommandProcessor();
 
-	wxFileDialog dialog(this, _("Load Object..."), _T(""), _T(""),
+	wxFileDialog openFileDialog(this, _("Load Object..."), _T(""), _T(""),
 			_(
 					"All supported files (*.obj; *.dxf; *.stl; *.gts)|*.obj;*.dxf;*DXF;*.stl;*.STL;*.gts;*.GTS|Wavefront OBJ Files (*.obj)|*.obj;*.OBJ|DXF Files (*.dxf)|*.dxf;*.DXF|Stereolithography files (STL files) (*.stl)|*.stl;*.STL|GTS files (*.gts)|*.gts;*.GTS|All files|*.*"),
 			wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_MULTIPLE);
 
 	if(wxDir::Exists(filepaths->lastObjectDirectory)){
-		dialog.SetDirectory(filepaths->lastObjectDirectory);
+		openFileDialog.SetDirectory(filepaths->lastObjectDirectory);
 	}else{
 		if(wxDir::Exists(filepaths->lastProjectDirectory)){
-			dialog.SetDirectory(filepaths->lastProjectDirectory);
+			openFileDialog.SetDirectory(filepaths->lastProjectDirectory);
 		}
 	}
 
-	if(dialog.ShowModal() == wxID_OK){
+	if(openFileDialog.ShowModal() == wxID_OK){
 		wxArrayString paths;
-		dialog.GetPaths(paths);
+		openFileDialog.GetPaths(paths);
 		selection.Set(Selection::Object);
 		for(size_t n = 0; n < paths.GetCount(); ++n){
 			wxFileName fileName = paths[n];
