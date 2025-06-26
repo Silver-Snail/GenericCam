@@ -81,10 +81,17 @@ bool DialogTestGCode::TransferDataToWindow(void)
 
 	wxString out;
 	if(!temp.Comment.empty()){
+		//std::string s1 = "This is a String";
+		std::wstring ws( temp.Comment.begin(), temp.Comment.end() ); // converting s1 to ws in its range
+ 
+		std::wcout << ws << std::endl;
+ 
+		getchar();
+
 		if(temp.message){
-			out = _T("Message: ") + temp.Comment + _T("\n");
+			out = _T("Message: ") + ws + _T("\n");
 		}else{
-			out = _T("Comment: ") + temp.Comment + _T("\n");
+			out = _T("Comment: ") + ws + _T("\n");
 		}
 	}
 	if(temp.block_delete) out += _T("Block-delete possible for this block.\n");
