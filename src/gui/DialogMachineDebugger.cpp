@@ -31,7 +31,7 @@
 #include "IDs.h"
 #include <wx/textfile.h>
 #include <wx/dir.h>
-
+#include <wx/wx.h>
 #include "FrameMain.h"
 #include "FrameParent.h"
 #include "SettingsStereo3D.h"
@@ -150,21 +150,21 @@ void DialogMachineDebugger::OnMachineLoad(wxRibbonButtonBarEvent& event)
 {
 	FrameMain * frame = wxStaticCast(GetParent(), FrameMain);
 	CollectionFilepaths * filepaths = frame->GetFilePaths();
-	wxFileDialog dialog(this, _("Open machine description..."), _T(""), _T(""),
+	wxFileDialog openFileDialog(this, _("Open machine description..."), _T(""), _T(""),
 			_(
 					"All machine descriptions  (*.lua;*.zip)|*.lua;*.zip|Machine descriptions (LUA Files)  (*.lua)|*.lua|Packed Machine descriptions  (*.zip)|*.zip|Text files  (*.txt)|*.txt|All files|*.*"),
 			wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
 	if(wxDir::Exists(filepaths->lastMachineDirectory)){
-		dialog.SetDirectory(filepaths->lastMachineDirectory);
+		openFileDialog.SetDirectory(filepaths->lastMachineDirectory);
 	}else{
 		if(wxDir::Exists(filepaths->lastProjectDirectory)){
-			dialog.SetDirectory(filepaths->lastProjectDirectory);
+			openFileDialog.SetDirectory(filepaths->lastProjectDirectory);
 		}
 	}
 
-	if(dialog.ShowModal() == wxID_OK){
-		wxFileName file(dialog.GetPath());
+	if(openFileDialog.ShowModal() == wxID_OK){
+		wxFileName file(openFileDialog.GetPath());
 		if(machine.Load(file)){
 			SetTitle(file.GetName());
 			m_textCtrlScript->SetValue(machine.machineDescription);
