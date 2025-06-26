@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmath.a CMakeFiles/math.dir/JSON.cpp.o CMakeFiles/math.dir/MathParser.cpp.o CMakeFiles/math.dir/MatlabFile.cpp.o CMakeFiles/math.dir/MatlabMatrix.cpp.o CMakeFiles/math.dir/NelderMeadOptimizer.cpp.o CMakeFiles/math.dir/Unit.cpp.o
+/usr/bin/ranlib libmath.a
