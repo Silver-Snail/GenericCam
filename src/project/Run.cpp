@@ -520,6 +520,6 @@ size_t Run::GetMaxGeneratorID() const
 	return maxID;
 }
 
-Run& Run::operator =(const Run&)
+/*Run& Run::operator =(const Run&)
 {
-}
+}*/
