@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcppunittest.a CMakeFiles/cppunittest.dir/TestSelection.cpp.o CMakeFiles/cppunittest.dir/test.cpp.o
-/usr/bin/ranlib libcppunittest.a

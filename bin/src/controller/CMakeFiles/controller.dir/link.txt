@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcontroller.a CMakeFiles/controller.dir/Control3D.cpp.o CMakeFiles/controller.dir/Control3DAbstract.cpp.o CMakeFiles/controller.dir/ControlSpaceBall.cpp.o CMakeFiles/controller.dir/ControlSpaceMouse.cpp.o CMakeFiles/controller.dir/ControlSpaceOrb.cpp.o CMakeFiles/controller.dir/DialogSetup6DOFController.cpp.o CMakeFiles/controller.dir/MidiPort.cpp.o CMakeFiles/controller.dir/SerialPort.cpp.o CMakeFiles/controller.dir/guiSetup6DOFController.cpp.o
-/usr/bin/ranlib libcontroller.a
